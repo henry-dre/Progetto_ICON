@@ -207,13 +207,14 @@ user = pd.DataFrame(userInfo)
 # calcola le probabilità che il latte sia buono, discreto o pessimo
 print('\n\n\n'"Classificatore Bayesiano - Predizione qualità del latte (alta / bassa / media):"'\n')
 print(gnb.predict_proba(user))
-
 # calcolo probabilità con rete bayesiana
 
 print('\n\n\n'"Rete Bayesiana - Esempi vari di predizioni:")
 info = VariableElimination(bNet)
 
-quality = info.query(variables=['Grade'], evidence={'pH': 6, 'Odor': 1, 'Turbidity': 1})
+quality = info.query(variables=['Grade'],
+                     evidence={'pH': 6, 'Temprature': 40, 'Taste': 0, 'Odor': 0, 'Fat': 1, 'Turbidity': 1,
+                               'Colour': 250})
 print('\n')
 print(quality)
 print('\n')
